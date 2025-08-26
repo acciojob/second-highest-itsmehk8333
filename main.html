@@ -1,32 +1,58 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-	<link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
+<body>    
+    <script>
+        function secondHighest(arr) {
+            if (arr.length === 0) {
+                return "Array is empty";
+            }
+            if (arr.length === 1) {
+                return "Array has only one element";
+            }
+            
+            // Check if all elements are the same
+            let first = Number(arr[0]);
+            let allSame = true;
+            for (let i = 1; i < arr.length; i++) {
+                if (Number(arr[i]) !== first) {
+                    allSame = false;
+                    break;
+                }
+            }
+            if (allSame) {
+                return "All elements are the same";
+            }
 
-<body>	
-	<script>
-		function secondHighest(arr) {
-			//Write your code here
-			
-		}
+            // Find second highest
+            let max = -Infinity;
+            let secondMax = -Infinity;
+            for (let i = 0; i < arr.length; i++) {
+                let num = Number(arr[i]);
+                if (num > max) {
+                    secondMax = max;
+                    max = num;
+                } else if (num > secondMax && num < max) {
+                    secondMax = num;
+                }
+            }
+            if (secondMax === -Infinity) {
+                return "No second highest element exists";
+            }
+            return secondMax;
+        }
 
-		function Main() {
-			var n = prompt("Enter the number of elements");
-			var arr = [];
-			for (var i = 0; i < n; i++) {
-				arr[i] = prompt("Enter element " + (i+1));
-			}
-			alert(secondHighest(arr));
-		}
-		Main();
-	</script>
-
-    <script type="text/javascript" src="./script.js">
-</script>
-
+        function Main() {
+            var n = prompt("Enter the number of elements");
+            var arr = [];
+            for (var i = 0; i < n; i++) {
+                arr[i] = prompt("Enter element " + (i+1));
+            }
+            alert(secondHighest(arr));
+        }
+        Main();
+    </script>
 </body>
-
 </html>
