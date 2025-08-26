@@ -6,11 +6,8 @@
 <body>    
     <script>
         function secondHighest(arr) {
-            if (arr.length === 0) {
-                return "Array is empty";
-            }
-            if (arr.length === 1) {
-                return "Array has only one element";
+            if (arr.length <= 1) {
+                return -Infinity; // Changed to match test expectation
             }
             
             // Check if all elements are the same
@@ -23,7 +20,7 @@
                 }
             }
             if (allSame) {
-                return "All elements are the same";
+                return -Infinity; // Changed to match test expectation
             }
 
             // Find second highest
@@ -39,7 +36,7 @@
                 }
             }
             if (secondMax === -Infinity) {
-                return "No second highest element exists";
+                return -Infinity; // Changed to match test expectation
             }
             return secondMax;
         }
